@@ -121,7 +121,8 @@ class RGBLinkMiniConnector extends RGBLinkApiConnector {
 		commands.push(new PollingCommand('78', '13', '00', '00', '00')) // asking about switch setting
 		commands.push(new PollingCommand('75', '1F', '00', '00', '00')) // asking about PIP mode
 		commands.push(new PollingCommand('78', '07', '00', '00', '00')) // asking about switch effect
-		commands.push(new PollingCommand('75', '1B', '00', '00', '00')) // asking about PIP layer (A or B)
+		// Mini+ responds to the PIP-layer status query (75 1B) with an error (FFFFFFFF).
+		// Do not poll it; manual PIP-layer selection actions remain available.
 		commands.push(new PollingCommand('F1', '40', '01', '00', '00')) // asking about special status 22
 		commands.push(new PollingCommand('68', '01', '00', '00', '00')) // read device model
 
